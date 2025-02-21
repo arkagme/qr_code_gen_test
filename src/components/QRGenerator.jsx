@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import axios from 'axios';
+require('dotenv').config()
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api'
 
 const QRGenerator = () => {
