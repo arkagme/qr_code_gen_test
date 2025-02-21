@@ -5,8 +5,8 @@ const path = require('path');
 require('dotenv').config();
 
 // Import routes
-const supabase = require('./util/database')
-const qrRoutes = require('./api/routes/qrRoutes');
+const supabase = require('../util/database')
+const qrRoutes = require('./routes/qrRoutes');
 ; // Pre-import for optimization
 // Create Express app
 const app = express();

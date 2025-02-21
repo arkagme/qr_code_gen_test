@@ -13,6 +13,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<QRGenerator />} />
           <Route path="/dashboard/:id" element={<Dashboard />} />
+          <Route path="/r/:trackingId" element={<QRGenerator />} />
         </Routes>
       </div>
     </Router>

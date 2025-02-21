@@ -1,5 +1,5 @@
 // server.js (updated)
-const app = require('./app');
+const app = require('./api/app');
 const PORT = process.env.PORT || 5000;
 
 // Only listen if this file is run directly (not imported)
