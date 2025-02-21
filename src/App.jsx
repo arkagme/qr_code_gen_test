@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import QRGenerator from './components/QRGenerator';
-import Dashboard from './components/Dashboard';
+import QRGenerator from './components/QRGenerator.jsx';
+import Dashboard from './components/Dashboard.jsx';
 
 const App = () => {
   return (
