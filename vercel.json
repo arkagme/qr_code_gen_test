@@ -9,12 +9,12 @@
       "src": "/r/(.*)",
       "dest": "api/redirect.js"
     },
-    { 
-      "handle": "filesystem" 
-    },
     {
       "src": "/dashboard/(.*)",
-      "dest": "dist/index.html"
+      "dest": "/index.html"
+    },
+    { 
+      "handle": "filesystem" 
     },
     {
       "src": "/(.*)",
