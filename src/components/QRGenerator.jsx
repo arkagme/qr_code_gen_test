@@ -149,12 +149,12 @@ const QRGenerator = () => {
               {qrData.isDynamic && (
                 <div className="mt-3">
                   <p>Tracking ID: {qrData.trackingId}</p>
-                  <Link 
-                    to={`/dashboard/${qrData.trackingId}`}
+                  <a 
+                    href={`/dashboard/${qrData.trackingId}`}
                     className="btn btn-info"
-                    >
+                  >
                     View Analytics
-                  </Link>
+                  </a>
                 </div>
               )}
             </div>
