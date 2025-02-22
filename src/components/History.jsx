@@ -30,7 +30,7 @@ const QRHistoryModal = () => {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-3 shadow-lg"
+        className="fixed top-16 bottom-16 right-16 bg-red-500 hover:bg-blue-600 text-black rounded-full p-3 shadow-lg"
       >
         <HistoryIcon className="w-6 h-6" />
       </button>

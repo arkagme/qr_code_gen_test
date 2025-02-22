@@ -8,7 +8,7 @@ const App = () => {
     <Router>
       <div className="container">
         <header className="my-4">
-          <h1 className="text-center">Dynamic QR Code Generator</h1>
+          <h1 className="text-center">DCS Dynamic QR Code Generator</h1>
         </header>
         <Routes>
           <Route path="/" element={<QRGenerator />} />
