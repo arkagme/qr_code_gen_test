@@ -7,15 +7,15 @@
     },
     {
       "src": "/r/(.*)",
-      "dest": "dist/index.html"
+      "dest": "index.html"
     },
     {
       "src": "/(.*)",
-      "dest": "dist/index.html"
+      "dest": "index.html"
     },
     {
       "src": "/dashboard/(.*)",
-      "dest": "api/app.js"
+      "dest": "index.html"
     }
   ]
 }
