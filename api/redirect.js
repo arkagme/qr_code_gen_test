@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const supabase = require('./util/database.js'); // Move these files into the api directory
+const supabase = require('../util/database.js'); // Move these files into the api directory
 
 const app = express();
 app.use(cors());
