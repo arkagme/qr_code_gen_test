@@ -41,20 +41,45 @@ const QRGenerator = () => {
     const svg = qrRef.current;
     const svgData = new XMLSerializer().serializeToString(svg);
     const img = new Image();
+
+    const logoImg = new Image();
+    logoImg.crossOrigin = "anonymous"; // Allow loading external images
+    logoImg.src = "https://iili.io/39yM50u.md.png";
     
-    img.onload = () => {
+    Promise.all([
+      new Promise((resolve) => {
+        img.onload = resolve;
+        img.src = "data:image/svg+xml;base64," + btoa(svgData);
+      }),
+      new Promise((resolve) => {
+        logoImg.onload = resolve;
+      }),
+    ]).then(() => {
+      // Set canvas dimensions
       canvas.width = img.width;
       canvas.height = img.height;
       const ctx = canvas.getContext("2d");
+  
+      // Draw the QR code onto the canvas
       ctx.drawImage(img, 0, 0);
-      
+  
+      // Draw the logo in the center of the QR code
+      if (withLogo) {
+        const logoSize = 40; // Logo size
+        const centerX = (canvas.width - logoSize) / 2;
+        const centerY = (canvas.height - logoSize) / 2;
+        ctx.drawImage(logoImg, centerX, centerY, logoSize, logoSize);
+      }
+  
+      // Trigger the download
       const a = document.createElement("a");
       a.download = "qrcode.png";
       a.href = canvas.toDataURL("image/png");
       a.click();
-    };
-    
-    img.src = "data:image/svg+xml;base64," + btoa(svgData);
+    }).catch((error) => {
+      console.error("Error loading images:", error);
+      alert("Failed to download QR code");
+    });
   };
   
   return (
