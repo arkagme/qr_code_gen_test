@@ -129,7 +129,7 @@ const QRGenerator = () => {
                   includeMargin={true}
                   imageSettings={
                     withLogo ? {
-                      src: "https://i.ibb.co/s9HqZSqd/DCS-icon-1-1.png",
+                      src: "https://iili.io/39yM50u.md.png",
                       excavate: true,
                       height: 40,
                       width: 40,
