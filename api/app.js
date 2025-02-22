@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Redirect handler for QR code tracking
-app.get('/r/:trackingId', async (req, res) => {
+app.use('/r/:trackingId', async (req, res) => {
   const { trackingId } = req.params;
   
   try {
