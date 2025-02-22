@@ -38,44 +38,48 @@ const QRGenerator = () => {
   const downloadQRCode = () => {
     if (!qrRef.current) return;
     
-    const canvas = document.createElement("canvas");
     const svg = qrRef.current;
     const svgData = new XMLSerializer().serializeToString(svg);
+    
+    // Create canvas with fixed size
+    const canvas = document.createElement("canvas");
+    canvas.width = 400;  // Double the original QR size (200)
+    canvas.height = 400;
+    
+    const ctx = canvas.getContext("2d");
+    
+    // Fill white background
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
     const img = new Image();
-
     const logoImg = new Image();
-    logoImg.crossOrigin = "anonymous"; // Allow loading external images
+    logoImg.crossOrigin = "anonymous";
     logoImg.src = "https://iili.io/39yM50u.md.png";
     
     Promise.all([
       new Promise((resolve) => {
         img.onload = resolve;
-        img.src = "data:image/svg+xml;base64," + btoa(svgData);
+        img.src = `data:image/svg+xml;base64,${btoa(svgData)}`;
       }),
-      new Promise((resolve) => {
+      withLogo ? new Promise((resolve) => {
         logoImg.onload = resolve;
-      }),
+      }) : Promise.resolve()
     ]).then(() => {
-      // Set canvas dimensions
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext("2d");
-  
-      // Draw the QR code onto the canvas
-      ctx.drawImage(img, 0, 0);
-  
-      // Draw the logo in the center of the QR code
+      // Draw QR code at double size
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      
+      // Draw logo if enabled
       if (withLogo) {
-        const logoSize = 40; // Logo size
+        const logoSize = 80; // Double the original logo size
         const centerX = (canvas.width - logoSize) / 2;
         const centerY = (canvas.height - logoSize) / 2;
         ctx.drawImage(logoImg, centerX, centerY, logoSize, logoSize);
       }
-  
-      // Trigger the download
+      
       const a = document.createElement("a");
       a.download = "qrcode.png";
-      a.href = canvas.toDataURL("image/png");
+      a.href = canvas.toDataURL("image/png", 1.0);
       a.click();
     }).catch((error) => {
       console.error("Error loading images:", error);
@@ -150,17 +154,15 @@ const QRGenerator = () => {
                 <QRCodeSVG
                   ref={qrRef}
                   value={qrData.url}
-                  size={200}
+                  size={300}
                   level="H"
-                  includeMargin={true}
+                  boostLevel="true"
                   imageSettings={
                     withLogo ? {
                       src: "https://iili.io/39yM50u.md.png",
                       excavate: true,
-                      height: 40,
-                      width: 40,
-                      level:'H',
-                      marginSize:4
+                      height: 50,
+                      width: 50,
                     } : undefined
                   }
                 />
