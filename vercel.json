@@ -12,6 +12,10 @@
     {
       "src": "/(.*)",
       "dest": "dist/index.html"
+    },
+    {
+      "src": "/dashboard/(.*)",
+      "dest": "dist/index.html"
     }
   ]
 }
