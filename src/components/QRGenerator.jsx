@@ -125,7 +125,7 @@ const QRGenerator = () => {
                   onChange={() => setWithLogo(!withLogo)}
                 />
                 <label className="form-check-label" htmlFor="logo">
-                  Add Logo to QR Code
+                  Add DCS Logo to QR Code
                 </label>
               </div>
               
