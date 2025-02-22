@@ -25,38 +25,5 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// Redirect handler for QR code tracking
-app.get('/r/:trackingId', async (req, res) => {
-  const { trackingId } = req.params;
-  
-  try {
-    // Get target URL
-    const { data, error } = await supabase
-      .from('qr_codes')
-      .select('target_url')
-      .eq('id', trackingId)
-      .single();
-    
-    if (error || !data) {
-      return res.status(404).send('QR code not found');
-    }
-    
-    // Log this visit
-    await supabase
-      .from('analytics')
-      .insert([{
-        qr_code_id: trackingId,
-        user_agent: req.headers['user-agent'],
-        ip_address: req.ip
-      }]);
-    
-    // Redirect to the target URL
-    res.redirect(data.target_url);
-  } catch (error) {
-    console.error('Redirect error:', error);
-    res.status(500).send('Server error');
-  }
-});
-
 // Export the app for serverless use
 module.exports = app;

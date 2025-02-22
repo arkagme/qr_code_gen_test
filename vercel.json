@@ -1,15 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/app.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "src/App.jsx",
-      "use": "@vercel/static"
-    }
-  ],
   "routes": [
     {
       "src": "/api/(.*)",
@@ -17,7 +7,7 @@
     },
     {
       "src": "/r/(.*)",
-      "dest": "api/app.js"
+      "dest": "api/routes/redirect.js"
     },
     { 
       "handle": "filesystem" 
