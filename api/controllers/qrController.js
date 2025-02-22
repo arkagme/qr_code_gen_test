@@ -69,12 +69,10 @@ exports.getAnalytics = async (req, res) => {
     if (analyticsError) throw analyticsError;
     
     // Get daily scans using direct query
-    const { data: dailyScans, error: dailyError } = await supabase
-      .from('analytics')
-      .select('date:timestamp::date, scans:count()')
-      .eq('qr_code_id', id)
-      .group('date')
-      .order('date');
+    const { data: dailyScans, error: dailyError } = await supabase.rpc(
+      'get_daily_scans',
+      { qr_id: id }
+    );
     
     if (dailyError) throw dailyError;
     
