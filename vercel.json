@@ -7,7 +7,7 @@
     },
     {
       "src": "/r/(.*)",
-      "dest": "api/routes/redirect.js"
+      "dest": "api/redirect.js"
     },
     { 
       "handle": "filesystem" 

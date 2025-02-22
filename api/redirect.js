@@ -10,7 +10,7 @@ app.use(express.json());
 const handler = async (req, res) => {
   // Get tracking ID from the URL path
   const trackingId = req.url.split('/r/')[1];
-  
+  console.log(trackingId);
   if (!trackingId) {
     return res.status(404).send('Invalid tracking ID');
   }
