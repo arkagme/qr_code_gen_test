@@ -1,13 +1,14 @@
 const express = require('express');
 const cors = require('cors');
-const supabase = require('../util/database.js'); // Move these files into the api directory
+const supabase = require('../util/database.js');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.all('*', async (req, res) => {
-  // Extract tracking ID from URL
+// Simple redirect handler - no path resolution needed
+const handler = async (req, res) => {
+  // Get tracking ID from the URL path
   const trackingId = req.url.split('/r/')[1];
   
   if (!trackingId) {
@@ -36,11 +37,14 @@ app.all('*', async (req, res) => {
       }]);
     
     // Redirect to the target URL
-    res.redirect(data.target_url);
+    return res.redirect(data.target_url);
   } catch (error) {
     console.error('Redirect error:', error);
-    res.status(500).send('Server error');
+    return res.status(500).send('Server error');
   }
-});
+};
+
+// Mount the handler
+app.get('*', handler);
 
 module.exports = app;
