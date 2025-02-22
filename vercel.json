@@ -15,7 +15,7 @@
     },
     {
       "src": "/dashboard/(.*)",
-      "dest": "dist/index.html"
+      "dest": "api/app.js"
     }
   ]
 }
