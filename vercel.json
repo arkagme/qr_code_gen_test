@@ -13,11 +13,11 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "api/app.js"
+      "dest": "server.js"
     },
     {
       "src": "/r/(.*)",
-      "dest": "public/index.html"
+      "dest": "server.js"
     },
     {
       "src": "/(.*)",
