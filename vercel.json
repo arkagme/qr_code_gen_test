@@ -5,12 +5,12 @@
       "src": "/api/(.*)",
       "dest": "api/app.js"
     },
-    { 
-      "handle": "filesystem" 
-    },
     {
       "src": "/r/(.*)",
-      "dest": "dist/index.html"
+      "dest": "api/app.js"
+    },
+    { 
+      "handle": "filesystem" 
     },
     {
       "src": "/dashboard/(.*)",
