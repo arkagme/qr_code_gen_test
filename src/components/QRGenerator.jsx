@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
 import axios from 'axios';
 
@@ -149,12 +150,12 @@ const QRGenerator = () => {
               {qrData.isDynamic && (
                 <div className="mt-3">
                   <p>Tracking ID: {qrData.trackingId}</p>
-                  <a 
-                    href={`/dashboard/${qrData.trackingId}`}
+                  <Link 
+                    to={`/dashboard/${qrData.trackingId}`}
                     className="btn btn-info"
                   >
                     View Analytics
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
