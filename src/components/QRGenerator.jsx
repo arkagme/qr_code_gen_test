@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
 import axios from 'axios';
+import QRHistoryModal from './History.jsx';
 
 const QRGenerator = () => {
   const [url, setUrl] = useState('');
@@ -187,6 +188,7 @@ const QRGenerator = () => {
           </div>
         )}
       </div>
+      <QRHistoryModal />
     </div>
   );
 };
