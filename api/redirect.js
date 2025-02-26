@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Simple redirect handler - no path resolution needed
+// Simple redirect handler 
 const handler = async (req, res) => {
   // Get tracking ID from the URL path
   const trackingId = req.url.split('/r/')[1];

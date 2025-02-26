@@ -43,7 +43,7 @@ const QRGenerator = () => {
     
     // Create canvas with fixed size
     const canvas = document.createElement("canvas");
-    canvas.width = 400;  // Double the original QR size (200)
+    canvas.width = 400;  
     canvas.height = 400;
     
     const ctx = canvas.getContext("2d");
@@ -71,7 +71,7 @@ const QRGenerator = () => {
       
       // Draw logo if enabled
       if (withLogo) {
-        const logoSize = 80; // Double the original logo size
+        const logoSize = 80; 
         const centerX = (canvas.width - logoSize) / 2;
         const centerY = (canvas.height - logoSize) / 2;
         ctx.drawImage(logoImg, centerX, centerY, logoSize, logoSize);

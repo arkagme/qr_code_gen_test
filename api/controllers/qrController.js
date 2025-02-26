@@ -1,4 +1,3 @@
-// qrController.js
 const supabase = require('../../util/database.js');
 const crypto = require('crypto');
 
@@ -6,7 +5,6 @@ exports.generateQR = async (req, res) => {
   try {
     const { url, isDynamic, withLogo } = req.body;
     
-    // For static QR codes, just return the URL
     if (!isDynamic) {
       return res.json({ 
         url,
@@ -30,7 +28,7 @@ exports.generateQR = async (req, res) => {
     
     if (error) throw error;
     
-    // Create tracking URL (host from request)
+    // Create tracking URL
     const baseUrl = process.env.BASE_URL ||`${req.protocol}://${req.get('host')}`;
     const trackingUrl = `${baseUrl}/r/${trackingId}`;
     
@@ -60,7 +58,7 @@ exports.getAnalytics = async (req, res) => {
       return res.status(404).json({ error: 'QR code not found' });
     }
     
-    // Get analytics data from Supabase using their SQL function
+    // Get analytics data from Supabase
     const { data: analyticsData, error: analyticsError } = await supabase.rpc(
       'get_qr_analytics', 
       { qr_id: id }
