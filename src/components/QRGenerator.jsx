@@ -71,7 +71,7 @@ const QRGenerator = () => {
       
       // Draw logo if enabled
       if (withLogo) {
-        const logoSize = 80; 
+        const logoSize = 70; 
         const centerX = (canvas.width - logoSize) / 2;
         const centerY = (canvas.height - logoSize) / 2;
         ctx.drawImage(logoImg, centerX, centerY, logoSize, logoSize);
@@ -157,12 +157,13 @@ const QRGenerator = () => {
                   size={300}
                   level="H"
                   boostLevel="true"
+                  marginSize={4}
                   imageSettings={
                     withLogo ? {
                       src: "https://iili.io/39yM50u.md.png",
                       excavate: true,
-                      height: 50,
-                      width: 50,
+                      height: 55,
+                      width: 55,
                     } : undefined
                   }
                 />
