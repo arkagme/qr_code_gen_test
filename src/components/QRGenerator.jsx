@@ -191,7 +191,9 @@ const QRGenerator = () => {
           </div>
         )}
       </div>
+      <div>
       <QRHistoryModal />
+      </div>
     </div>
   );
 };
