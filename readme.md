@@ -1,0 +1,1 @@
+Readme file for Dynamic QR code generator 
